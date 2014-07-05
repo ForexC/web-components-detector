@@ -11,6 +11,8 @@ var html = document.getElementsByTagName('html')[0],
 	 */
 	classActive = 'crx-wcd-active',
 	classComponent = 'crx-wcd-component',
+	classComponentX = 'crx-wcd-component-x',
+	classComponentIs = 'crx-wcd-component-is',
 
 	/*
 	 * Finds and classifies web components.
@@ -22,7 +24,17 @@ var html = document.getElementsByTagName('html')[0],
 
 		return Array.prototype.slice.call(document.all).filter(function (element) {
 
-			if (element.localName.indexOf('-') >= 0 || element.getAttribute('is')) {
+			if (element.localName.indexOf('x-') === 0) {
+				element.classList.add(classComponentX);
+				return true;
+			}
+
+			if (element.getAttribute('is')) {
+				element.classList.add(classComponentIs);
+				return true;
+			}
+
+			if (element.localName.indexOf('-') >= 0) {
 				element.classList.add(classComponent);
 				return true;
 			}
