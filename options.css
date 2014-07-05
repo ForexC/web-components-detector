@@ -1,0 +1,40 @@
+
+body {
+	font-family: Ubuntu, Arial, sans;
+	font-size: 18px;
+	color: #555;
+	background-color: #fff;
+}
+
+header {
+	margin: 0 auto;
+	padding: 0;
+	width: 600px;
+	text-align: center;
+}
+
+#col {
+	margin: 0 auto;
+	width: 600px;
+}
+
+#logo {
+	margin: 12px;
+	height: 128px;
+}
+
+h1 {
+	margin: 0 0 48px 0;
+	font-size: 1.6em;
+}
+
+input[type="checkbox"] {
+	margin: 0 8px 0 0;
+	cursor: pointer;
+}
+
+.input {
+	padding: 12px;
+	background: #f8f8f8;
+	border-radius: 4px;
+}
