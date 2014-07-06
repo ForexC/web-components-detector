@@ -18,9 +18,9 @@
 
 	"permissions": [
 		"storage",
-		// "activeTab",
-		"http://*/*",
-		"https://*/*"
+		"activeTab"
+		// "http://*/*",
+		// "https://*/*"
 	],
 
 	"background": {

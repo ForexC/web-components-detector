@@ -1,15 +1,15 @@
 
 html.crx-wcd-active .crx-wcd-component {
-	outline: 1px dashed rgba(255,0,0,0.9) !important;
-	background-color: rgba(255,0,0,0.1) !important;
+	outline: 1px dashed rgba(231, 76, 60, 0.9) !important;
+	background-color: rgba(231, 76, 60, 0.1) !important;
 }
 
 html.crx-wcd-active .crx-wcd-component-x {
-	outline: 1px dashed rgba(0,255,0,0.9) !important;
-	background-color: rgba(0,255,0,0.1) !important;
+	outline: 1px dashed rgba(46, 204, 113, 0.9) !important;
+	background-color: rgba(46, 204, 113, 0.1) !important;
 }
 
 html.crx-wcd-active .crx-wcd-component-is {
-	outline: 1px dashed rgba(0,0,255,0.9) !important;
-	background-color: rgba(0,0,255,0.1) !important;
+	outline: 1px dashed rgba(52, 152, 219, 0.9) !important;
+	background-color: rgba(52, 152, 219, 0.1) !important;
 }

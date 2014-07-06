@@ -15,7 +15,7 @@ header {
 
 #col {
 	margin: 0 auto;
-	width: 600px;
+	width: 800px;
 }
 
 #logo {
@@ -35,6 +35,14 @@ input[type="checkbox"] {
 
 .input {
 	padding: 12px;
-	background: #f8f8f8;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+code {
+	font-size: 0.8em;
+	border: 1px solid #e8e8e8;
 	border-radius: 4px;
+	padding: 4px 4px 2px 4px;
+	background: #f8f8f8;
 }
