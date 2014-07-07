@@ -22,7 +22,7 @@ var html = document.getElementsByTagName('html')[0],
 	 */
 	markComponents = function () {
 
-		return Array.prototype.slice.call(document.all).filter(function (element) {
+		return Array.prototype.slice.call(document.getElementsByTagName('*')).filter(function (element) {
 
 			if (element.localName.indexOf('x-') === 0) {
 				element.classList.add(classComponentX);
