@@ -3,23 +3,23 @@
 /*global chrome */
 
 var defaults = {
-		autoinit: false
-	},
+        autoinit: false
+    };
 
-	saveOptions = function () {
+function saveOptions() {
 
-		chrome.storage.sync.set({
-			autoinit: document.getElementById('autoinit').checked
-		});
-	},
+    chrome.storage.sync.set({
+        autoinit: document.getElementById('autoinit').checked
+    });
+}
 
-	restoreOptions = function () {
+function restoreOptions() {
 
-		chrome.storage.sync.get(defaults, function (items) {
+    chrome.storage.sync.get(defaults, function (items) {
 
-			document.getElementById('autoinit').checked = items.autoinit;
-		});
-	};
+        document.getElementById('autoinit').checked = items.autoinit;
+    });
+}
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('autoinit').addEventListener('change', saveOptions);
