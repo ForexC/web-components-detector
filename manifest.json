@@ -2,11 +2,11 @@
     "manifest_version": 2,
     "name": "Web Components Detector",
     "short_name": "Web Components Detector",
-    "version": "0.0.2",
+    "version": "0.1.0",
 
     "author": "Lars Jung <lrsjng@gmail.com>",
     "description": "Detect and highlight Web Components.",
-    "homepage_url": "http://larsjung.de/none",
+    "homepage_url": "https://larsjung.de/null",
 
     "browser_action": {
         "default_icon": {

@@ -1,26 +1,24 @@
-(function () {
 'use strict';
-/*global chrome */
 
-var html = document.getElementsByTagName('html')[0];
+const html = document.getElementsByTagName('html')[0];
 
 /*
  * Marker Classes
  * classActive: to mark <html> element if state is active
  * classComponent: to mark all matched web components (might be more fine grained in future)
  */
-var classActive = 'crx-wcd-active';
-var classComponent = 'crx-wcd-component';
-var classComponentX = 'crx-wcd-component-x';
-var classComponentIs = 'crx-wcd-component-is';
+const classActive = 'crx-wcd-active';
+const classComponent = 'crx-wcd-component';
+const classComponentX = 'crx-wcd-component-x';
+const classComponentIs = 'crx-wcd-component-is';
 
 /*
  * Current State
  * isActive <boolean>: highlight web components if true
  * components <list of elements>: all matched and marked elements
  */
-var isActive = false;
-var components = [];
+let isActive = false;
+let components = [];
 
 /*
  * Finds and classifies web components.
@@ -29,9 +27,7 @@ var components = [];
  * returns <list of elements>: all matched and marked elements
  */
 function markComponents() {
-
-    return Array.prototype.slice.call(document.getElementsByTagName('*')).filter(function (element) {
-
+    return Array.from(document.getElementsByTagName('*')).filter(element => {
         if (element.localName.indexOf('x-') === 0) {
             element.classList.add(classComponentX);
             return true;
@@ -53,7 +49,6 @@ function markComponents() {
  * Updates styles and icon to reflect internal state
  */
 function update() {
-
     /* update element styles based on current state */
     if (isActive) {
         // refresh component marks (useful on dynamic DOM changes)
@@ -65,7 +60,7 @@ function update() {
 
     /* send current state to background script to update icon */
     chrome.runtime.sendMessage({
-        isActive: isActive,
+        isActive,
         count: components.length
     });
 }
@@ -76,7 +71,6 @@ function update() {
  *   .clicked <boolean>: whether icon was clicked
  */
 function onMessage(message) {
-
     if (message.clicked || message.autoinit) {
         /* toggle state and update */
         isActive = !isActive;
@@ -89,5 +83,3 @@ function onMessage(message) {
  * Bind message listener
  */
 chrome.runtime.onMessage.addListener(onMessage);
-
-}());
