@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web Components Detector",
     "short_name": "Web Components Detector",
-    "version": "0.1.0",
+    "version": "0.2.0",
 
     "author": "Lars Jung <lrsjng@gmail.com>",
     "description": "Detect and highlight Web Components.",
@@ -19,8 +19,6 @@
     "permissions": [
         "storage",
         "activeTab"
-        // "http://*/*",
-        // "https://*/*"
     ],
 
     "background": {

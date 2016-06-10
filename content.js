@@ -1,5 +1,3 @@
-'use strict';
-
 const html = document.getElementsByTagName('html')[0];
 
 /*
@@ -26,7 +24,7 @@ let components = [];
  * on https://gist.github.com/ebidel/4bdbe9db55d8a775d0a4
  * returns <list of elements>: all matched and marked elements
  */
-function markComponents() {
+const markComponents = () => {
     return Array.from(document.getElementsByTagName('*')).filter(element => {
         if (element.localName.indexOf('x-') === 0) {
             element.classList.add(classComponentX);
@@ -42,13 +40,15 @@ function markComponents() {
             element.classList.add(classComponent);
             return true;
         }
+
+        return false;
     });
-}
+};
 
 /*
  * Updates styles and icon to reflect internal state
  */
-function update() {
+const update = () => {
     /* update element styles based on current state */
     if (isActive) {
         // refresh component marks (useful on dynamic DOM changes)
@@ -63,20 +63,20 @@ function update() {
         isActive,
         count: components.length
     });
-}
+};
 
 /*
  * Listens for background script messages
  * message <object>:
  *   .clicked <boolean>: whether icon was clicked
  */
-function onMessage(message) {
+const onMessage = message => {
     if (message.clicked || message.autoinit) {
         /* toggle state and update */
         isActive = !isActive;
         update();
     }
-}
+};
 
 
 /*

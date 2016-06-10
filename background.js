@@ -1,5 +1,3 @@
-'use strict';
-
 let config = {
     autoinit: false
 };
@@ -20,7 +18,7 @@ const tabStates = {};
  * Updates browser action icon based on tab state.
  * tabId <int>: a tab ID
  */
-function updateIcon(tabId) {
+const updateIcon = tabId => {
     const state = tabStates[tabId];
 
     if (state === undefined) {
@@ -33,14 +31,14 @@ function updateIcon(tabId) {
         chrome.browserAction.setBadgeText({text: `${state.count}`});
         chrome.browserAction.setBadgeBackgroundColor({color: '#555'});
     }
-}
+};
 
 /*
  * Sends a message to a tab, injects content scripts and styles on demand.
  * tabId <int>: a tab ID
  * message <any>: a message
  */
-function sendMessage(tabId, message) {
+const sendMessage = (tabId, message) => {
     if (tabStates[tabId] === undefined) {
         chrome.tabs.insertCSS(tabId, {file: 'content.css'}, () => {
             chrome.tabs.executeScript(tabId, {file: 'content.js'}, () => {
@@ -50,7 +48,7 @@ function sendMessage(tabId, message) {
     } else {
         chrome.tabs.sendMessage(tabId, message);
     }
-}
+};
 
 /*
  * Listens for content script messages
@@ -59,24 +57,24 @@ function sendMessage(tabId, message) {
  *   .count <int>: number of deteced web component elements
  * sender <object>: Chrome Sender object
  */
-function onMessage(message, sender) {
+const onMessage = (message, sender) => {
     tabStates[sender.tab.id] = message;
     updateIcon(sender.tab.id);
-}
+};
 
 /*
  * Listens for icon clicks
  * tab <obj>: Chrome Tab object
  */
-function onClicked(tab) {
+const onClicked = tab => {
     sendMessage(tab.id, {clicked: true});
-}
+};
 
-function onTabActivated(info) {
+const onTabActivated = info => {
     updateIcon(info.tabId);
-}
+};
 
-function onTabUpdated(tabId, info) {
+const onTabUpdated = (tabId, info) => {
     if (info.status === 'loading') {
         // clean state
         tabStates[tabId] = undefined;
@@ -88,13 +86,13 @@ function onTabUpdated(tabId, info) {
             sendMessage(tabId, {autoinit: true});
         }
     }
-}
+};
 
-function onStorageChanged() {
+const onStorageChanged = () => {
     chrome.storage.sync.get(config, items => {
         config = items;
     });
-}
+};
 
 
 /* load config */
